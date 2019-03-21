@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   resources :user
     get '/user/new' => 'user#new'

@@ -44,7 +44,17 @@
           <% end %>
         </li>
         <li>
-          <%= link_to 'Sign Up!', [:user, :new] %>
+          <% if current_user %>
+          Signed in as <%= current_user.first_name %></li> 
+          <li><%= link_to "Logout", [:logout] %>
+          </li>
+          <% else %>
+          <%= link_to 'Login', [:login] %>
+          </li>
+          <li>
+          <%= link_to 'Signup', [:user, :new] %>
+          </li>
+          <% end %>
         </li>
       </ul>
     </div>
