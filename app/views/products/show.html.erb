@@ -30,10 +30,11 @@
   </article>
 <article class="new-review">
 <h3>Write a new review</h3>
-  <%= form_for :review do |r| %>
-    <label>Review: </label>
+  <%= form_for [@product, @reviews] do |r| %>
+    <%= r.hidden_field :user, value: session[:user_id] %>
+    <%= r.label :description %>
       <%= r.text_area :description %>
-    <label>Rating :</label>
+    <%= r.label :rating %>
     <%= r.select :rating, [['1 Star',1],['2 Stars',2],['3 Stars',3],['4 Stars',4],['5 Stars', 5]] %>
     <%= r.submit  %>
   <% end %>
@@ -49,8 +50,8 @@
 
       <div class="col-sm-4">
       <table>
-      <% @reviews.each do |review| %>
-        <%= render 'review', user: review.user.first_name, description: review[:description], rating: review[:rating] %>
+      <% @product.reviews.each do |review| %>
+        <%= render 'review', description: review[:description], rating: review[:rating] %>
       <% end %>
       </dl>
       </div>
