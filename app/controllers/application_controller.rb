@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
-  # Now we can use @current_user in our view files
+  # Now we can use @current_user in all our view files, since application_controller is the root controller
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
