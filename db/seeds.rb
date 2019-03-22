@@ -133,4 +133,28 @@ cat3.products.create!({
 })
 
 
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+prod1 = Product.find_or_create_by! id: 1
+prod2 = Product.find_or_create_by! id: 2
+prod3 = Product.find_or_create_by! id: 3
+
+prod1.reviews.create!({
+  user_id: 5,
+  description: 'Sooooo cool!',
+  rating: 5
+})
+prod2.reviews.create!({
+  user_id: 5,
+  description: 'This blows',
+  rating: 2
+})
+prod3.reviews.create!({
+  user_id: 5,
+  description: 'This does not fit',
+  rating: 1
+})
+
 puts "DONE!"
