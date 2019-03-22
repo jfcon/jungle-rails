@@ -28,7 +28,20 @@
 
 
   </article>
-  <article class = "product-reviews">
+<article class="new-review">
+<h3>Write a new review</h3>
+  <%= form_for :review do |r| %>
+    <label>Review: </label>
+      <%= r.text_area :description %>
+    <label>Rating :</label>
+    <%= r.select :rating, [['1 Star',1],['2 Stars',2],['3 Stars',3],['4 Stars',4],['5 Stars', 5]] %>
+    <%= r.submit  %>
+  <% end %>
+
+</article>
+
+
+  <article class="product-reviews">
   <h3>Product Reviews</h3>
   <div>
 
