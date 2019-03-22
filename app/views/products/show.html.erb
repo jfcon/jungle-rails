@@ -34,8 +34,8 @@
   <div class="row">
 
       <div class="col-sm-4">
-      <% @product.reviews.each do |review| %>
-        <%= render 'review', user: review[:user_id], description: review[:description], rating: review[:rating] %>
+      <% @reviews.each do |review| %>
+        <%= render 'review', user: review.user.first_name, description: review[:description], rating: review[:rating] %>
       <% end %>
       </div>
     </div>
