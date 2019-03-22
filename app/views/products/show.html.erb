@@ -29,14 +29,17 @@
 
   </article>
   <article class = "product-reviews">
+  <h3>Product Reviews</h3>
   <div>
 
   <div class="row">
 
       <div class="col-sm-4">
+      <table>
       <% @reviews.each do |review| %>
         <%= render 'review', user: review.user.first_name, description: review[:description], rating: review[:rating] %>
       <% end %>
+      </dl>
       </div>
     </div>
 
