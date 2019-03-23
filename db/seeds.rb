@@ -156,6 +156,12 @@ prod1.reviews.create!({
   rating: 1
 })
 
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+
 puts "DONE!"
 
 

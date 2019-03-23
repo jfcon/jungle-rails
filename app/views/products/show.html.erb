@@ -28,36 +28,8 @@
 
 
   </article>
-<article class="new-review">
-<h3>Write a new review</h3>
-  <%= form_for [@product, @reviews] do |r| %>
-    <%= r.hidden_field :user, value: session[:user_id] %>
-    <%= r.label :description %>
-      <%= r.text_area :description %>
-    <%= r.label :rating %>
-    <%= r.select :rating, [['1 Star',1],['2 Stars',2],['3 Stars',3],['4 Stars',4],['5 Stars', 5]] %>
-    <%= r.submit  %>
-  <% end %>
 
-</article>
+<%= render 'review' %>
 
-
-  <article class="product-reviews">
-  <h3>Product Reviews</h3>
-  <div>
-
-  <div class="row">
-
-      <div class="col-sm-4">
-      <table>
-      <% @product.reviews.each do |review| %>
-        <%= render 'review', description: review[:description], rating: review[:rating] %>
-      <% end %>
-      </dl>
-      </div>
-    </div>
-
-  </div>
-  </article>
 
 </section>

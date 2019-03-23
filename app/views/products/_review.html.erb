@@ -1,13 +1,38 @@
+<article class="reviews">
+  <h3>Write a new review</h3>
+  <%= form_for [@product, @review] do |r| %>
+    <%= r.label :description %>
+    <%= r.text_area :description %>
+    <%= r.label :rating %>
+    <%= r.select :rating, [['1 Star',1],['2 Stars',2],['3 Stars',3],['4 Stars',4],['5 Stars', 5]] %>
+    <%= r.submit  %>
+  <% end %>
+</article>
 
-<tr>
-  <td>Name: </td>
-  </tr>
-  <tr>
-  <td>Review: <%= description %></td>
-  </tr>
-  <tr>
-  <td>Rating: <%= rating %>/5</td>
-</tr>
-<tr>
-  <td>--------</td>
-</tr>
+
+<article class="product-reviews">
+<h3>Product Reviews</h3>
+<div>
+
+
+
+    <div class="col-sm-4">
+
+    <table>
+    <% @product.reviews.reverse_order.each do |review| %>
+      <tr>
+        <td>Name: <%= review.user.first_name %></td>
+      </tr>
+      <tr>
+        <td>Review: <%= review.description %></td>
+      </tr>
+      <tr>
+        <td>Rating: <%= review.rating %>/5</td>
+      </tr>
+      <tr>
+        <td>--------</td>
+      </tr>
+    <% end %>
+  </div>
+  </table>
+</div>
