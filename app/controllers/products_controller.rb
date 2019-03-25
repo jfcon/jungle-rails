@@ -9,4 +9,8 @@ class ProductsController < ApplicationController
     @review = @product.reviews.create
   end
 
+  def valid?
+    
+  end
+
 end
