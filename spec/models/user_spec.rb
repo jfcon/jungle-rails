@@ -78,4 +78,25 @@ RSpec.describe User, type: :model do
     end
 
 
+    describe '.authenticate_with_credentials' do
+
+      it 'should authenticate with the proper email and password' do
+        @user.save
+        User.authenticate_with_credentials(@user.email, @user.password)
+      end
+
+      it 'should return nil if email does not match' do
+        @user.save
+        logged_user = User.authenticate_with_credentials('wrong@example.com', '123456')
+        expect(logged_user).to eq nil
+      end
+
+      it 'should authenticate if email has spaces and/or case errors in field' do
+        @user.save
+        space_case = User.authenticate_with_credentials('  SOMETHING@example.com', '123456')
+        expect(space_case).to eq @user
+      end
+
+    end
+
 end
