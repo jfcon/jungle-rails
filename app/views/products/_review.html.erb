@@ -18,27 +18,23 @@
 
 <article class="product-reviews">
 <h3>Product Reviews</h3>
-<div>
-
-
-
-    <div class="col-sm-4">
-
+  <div class="col-sm-4">
     <table>
-      <% @product.reviews.reverse_order.each do |review| %>
+    <% @product.reviews.reverse_order.each do |review| %>
       <tr>
         <td>Name: <%= review.user.first_name %></td>
-      </tr>
-      <tr>
-        <td>Review: <%= review.description %></td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
         <td>Rating: <%= review.rating %>/5</td>
-      </tr>
-      <tr>
-        <td>--------</td>
+        </tr>
+        <tr>
+        <td>Review: <%= review.description %></td></tr>
+        <% if current_user && current_user.email == review.user.email %>
+         <tr><td><%= button_to "Delete", [@product, review], :method  => :delete, class: "btn btn-danger" %></td>
+         </tr>
+         <% end %>
       </tr>
     <% end %>
+    </table>
+
   </div>
-  </table>
-</div>
