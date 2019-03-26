@@ -1,3 +1,6 @@
+<h2>Reviews</h2>
+    <% if current_user %>
+
 <article class="reviews">
   <h3>Write a new review</h3>
   <%= form_for [@product, @review] do |r| %>
@@ -8,6 +11,9 @@
     <%= r.submit  %>
   <% end %>
 </article>
+  <% else %>
+  <h4>Please sign in to write a review</h3>
+<% end %>
 
 
 <article class="product-reviews">
@@ -19,7 +25,7 @@
     <div class="col-sm-4">
 
     <table>
-    <% @product.reviews.reverse_order.each do |review| %>
+      <% @product.reviews.reverse_order.each do |review| %>
       <tr>
         <td>Name: <%= review.user.first_name %></td>
       </tr>
